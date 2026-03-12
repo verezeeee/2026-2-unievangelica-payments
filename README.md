@@ -109,27 +109,11 @@ python3 app/pagamentos.py
 
 ## 📈 Evolução dos Testes
 
-| Estado | Testes Passando | Testes Falhando |
-|--------|----------------|-----------------|
-| **ANTES** | 1 | 1 |
-| **AGORA** | 11 | 0 |
+| Estado    | Testes Passando | Testes Falhando |
+| -----------| -----------------| -----------------|
+| **ANTES** | 1               | 1               |
+| **AGORA** | 11              | 0               |
 
-## 🔧 Comandos Úteis
-
-### Verificar cobertura de testes:
-```bash
-pytest tests/test_pagamentos.py --cov=app --cov-report=html
-```
-
-### Executar testes específicos:
-```bash
-pytest tests/test_pagamentos.py::test_aplicar_juros_atraso -v
-```
-
-### Verificar detalhes dos testes:
-```bash
-pytest tests/test_pagamentos.py -v -s
-```
 
 ## 📝 Resumo das Atividades Realizadas
 
