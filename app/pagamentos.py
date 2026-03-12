@@ -22,6 +22,21 @@ def processar_reembolso(valor_pago, valor_reembolso):
         return -1 
     return valor_pago - valor_reembolso
 
+def validar_valor_pagamento(valor):
+    """Valida se o valor do pagamento é positivo."""
+    return valor > 0
+
+def calcular_parcelas(valor_total, num_parcelas):
+    """Calcula o valor de cada parcela."""
+    if num_parcelas <= 0:
+        return -1
+    return valor_total / num_parcelas
+
+def aplicar_multa_cancelamento(valor, taxa_multa=10):
+    """Aplica multa por cancelamento."""
+    multa = valor * (taxa_multa / 100)
+    return valor + multa
+
 if __name__ == "__main__":
     print("=== Sistema de Teste Interativo de Pagamentos ===")
     while True:
@@ -30,6 +45,9 @@ if __name__ == "__main__":
         print("2 - Aplicar Juros de Atraso")
         print("3 - Validar Método de Pagamento")
         print("4 - Processar Reembolso")
+        print("5 - Validar Valor de Pagamento")
+        print("6 - Calcular Parcelas")
+        print("7 - Aplicar Multa por Cancelamento")
         print("0 - Sair")
         
         opcao = input("Escolha a função que deseja testar: ")
@@ -57,6 +75,26 @@ if __name__ == "__main__":
                 print(">>> Reembolso inválido: valor solicitado maior que o pago.")
             else:
                 print(f">>> Saldo restante: R$ {resultado:.2f}")
+        
+        elif opcao == "5":
+            v = float(input("Digite o valor do pagamento (R$): "))
+            valido = validar_valor_pagamento(v)
+            print(f">>> O valor R$ {v:.2f} é válido? {'Sim' if valido else 'Não'}")
+            
+        elif opcao == "6":
+            vt = float(input("Digite o valor total (R$): "))
+            np = int(input("Digite o número de parcelas: "))
+            resultado = calcular_parcelas(vt, np)
+            if resultado == -1:
+                print(">>> Número de parcelas inválido!")
+            else:
+                print(f">>> Valor de cada parcela: R$ {resultado:.2f}")
+            
+        elif opcao == "7":
+            v = float(input("Digite o valor (R$): "))
+            tm = float(input("Digite a taxa de multa (%): "))
+            resultado = aplicar_multa_cancelamento(v, tm)
+            print(f">>> Valor com multa: R$ {resultado:.2f}")
         
         elif opcao == "0":
             break
